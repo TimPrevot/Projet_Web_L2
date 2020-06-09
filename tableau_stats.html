@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <link rel="stylesheet" href="tableau_stats.css">
+        <title> Stats Fanatic </title>
+
+        <style>
+            .nav_button{
+                margin-left: 5px;
+                margin-right: 5px;
+                margin-bottom:auto;
+
+                color: white;
+                background-color: whitesmoke;
+
+                letter-spacing: .5px;
+                cursor: pointer;
+                outline: 0;
+                border: none;
+                border-radius: 2px;
+
+                display: inline-block;
+                height: 36px;
+                line-height: 36px;
+                padding: 0 16px;
+
+                position: relative;
+                overflow: hidden;
+
+                vertical-align: middle;
+
+                -webkit-filter: drop-shadow(3px 3px 3px rgb(88, 88, 88));
+                filter: drop-shadow(3px 3px 3px rgb(88, 88, 88));
+            }
+
+            .bloc{
+                margin-top: 36px;
+            }
+
+            .menu_button{
+                text-align: center;
+            }
+
+            .nav-bloc{
+                background: none;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="nba_logo.png" alt="The Logo">
+        <nav class="menu">
+            <div id="stats" class="bloc nav-bloc">
+                <div class="menu-button">
+                    <button name="button" class="nav-button" type="button" formnovalidate onclick="return showStats();"> Voir les stats sur la saison 2019-2020</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="bloc" id="listeStats">
+            <table id="tableStats">
+                <caption> Leaders statistiques sur la saison 2019-2020</caption>
+                <tr>
+                    <th>ID JOUEUR</th>
+                    <th> RANG </th>
+                    <th> JOUEUR </th>
+                    <th> EQUIPE </th>
+                    <th> MATCHS JOUES </th>
+                    <th> MIN </th>
+                    <th> FGM </th>
+                    <th> FGA </th>
+                    <th> FG_PCT </th>
+                    <th> FG3M </th>
+                    <th> FG3A </th>
+                    <th> FG3_PCT </th>
+                    <th> FTM </th>
+                    <th> FTA </th>
+                    <th> FT_PCT </th>
+                    <th> REB OFF </th>
+                    <th> REB DEF </th>
+                    <th> REB TOT </th>
+                    <th> AST </th>
+                    <th> STL </th>
+                    <th> BLK </th>
+                    <th> TOV </th>
+                    <th> PTS </th>
+                    <th> EFF </th>
+                </tr>
+            </table>
+            <div class="centre">
+                <div class="pagination">
+                    <div id="btn-pages"></div>
+                    <div id="btn-pages-binary">
+                        <a id="btn-prev" href="javascript:pagePrec()">&laquo;</a>
+                        <a id="btn-next" href="javascript:nextPage()">&raquo;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            window.onload = getStats();
+
+            
+            let beg = 0;
+            let pageSize = 25;
+            let currentPage = 1;
+            let numPages;
+
+            function getStats(){
+
+                fetch("data_stats.json", {mode : "no-cors"}).then(function(response) {
+                    let contentType = response.headers.get("content-type");
+                    if (contentType && contentType.indexOf("application/json") !== -1) {
+                        console.log(response);
+                        return response.json().then(function (data) {
+                            console.log('data', data);
+                            perstdata = data;
+                            numPages = Math.ceil(data.length / pageSize);
+                            paginerPrint(1, data.resultSet.rowSet)
+                        });
+                    } else {
+                        console.log("Oops, nous n'avons pas du JSON!");
+                    }
+                });
+            }
+
+            function createStat(obj){
+                var table = document.getElementById("tableStats");
+
+                var tableBody = document.getElementById("tableStats").tBodies[0];
+
+                let newCell;
+                var newRow = tableBody.insertRow(-1);
+                console.log(obj)
+                for (let i = 0; i < obj.length; i++){
+                    newCell = newRow.insertCell(i);
+                    newCell.appendChild(document.createTextNode(obj[i]))
+                }
+            }
+
+            function replaceStat(obj){
+                var table = document.getElementById("tableStats");
+                var tableBody = document.getElementsByTagName("tableStats").tBodies[0];
+                var rows = table.getElementsByTagName("tr");
+
+                var currentRow;
+                let newCell;
+                for (let i = rows.length - 1; i > 0; i--){
+                    document.getElementById("tableStats").deleteRow(i);
+                    currentRow = rows[rows.length - 1];
+                    for (let j = 0; j < obj.length; j++){
+                        newCell = currentRow.insertCell(j);
+                        newCell.appendChild(document.createTextNode(obj[j]));
+                    }
+                }
+            }
+
+            function showStats(){
+                document.getElementById("listeStats").style.display = "block";
+            }
+
+            function clearStats() {
+                var table = document.getElementById("tableStats");
+                var rows = table.getElementsByTagName("tr");
+
+                for (let i = rows.length - 1; i > 0; i--){
+                    document.getElementById("tableStats").deleteRow(i);
+                }
+            }
+
+            function paginerPrint(page, perstdata = null){
+                if (page < 1){
+                    page = 1;
+                }
+                if (page > numPages){
+                    page = numPages;
+                }
+
+                beg = (page - 1) * pageSize
+                console.log("Paginer");
+                clearStats();
+
+                let el;
+
+                for (let i = beg; i < (beg + pageSize); i++){
+                    console.log(i);
+                    el = perstdata[i];
+                    console.log(el);
+                    createStat(el);
+                }
+
+                listing_table = document.getElementById("btn-pages");
+                listing_table.innerHTML = "";
+
+                for (let i = 1; i < (numPages + 1); i++){
+                    if (numPages > 10){
+                        if ((i == page + 1 || i == page - 1) && (i == 1 || i == numPages)){
+                            listing_table.innerHTML += "<a href='#''>...</a>";
+                            continue
+                        }
+                        if (!(i == 1 || i == 2 || i == page || i == numPages - 1 || i == numPages)){
+                            console.log("Ne pas afficher" + i)
+                            continue
+                        }
+                    }
+
+                    if (i == page) {
+                        listing_table.innerHTML += "<a class='active' href='#''>" + i + "</a>";
+                    } else {
+                        listing_table.innerHTML += "<a href='#''>" + i + "</a>";
+                    }
+                }
+            }
+
+            function pagePrec(){
+                if (currentPage > 1){
+                    let data = null;
+                    currentPage--;
+                    paginerPrint(currentPage, data);
+                }
+            }
+
+            function nextPage(){
+                if (currentPage < numPages){
+                    let data = null;
+                    currentPage++;
+                    paginerPrint(currentPage, data);
+                }
+            }
+
+
+        </script>
+    </body>
+</html>
