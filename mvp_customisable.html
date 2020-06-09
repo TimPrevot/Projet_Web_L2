@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <meta charset='utf-8'/>
+            <link rel="stylesheet" href="mvp_customisable.css">
+            <title> Créez votre classement MVP ! </title>
+    </head>
+    <body>
+        <img src="nba_logo.png" alt="The Logo">
+
+        <h1> Créez votre classement MVP !</h1>
+
+        <p> Nous vous proposons dans cette section de créer votre propre classement MVP pour la saison 2019-2020 ! <br>
+            Remplissez directement les champs, et ajoutez vos joueurs au fur et à mesure. <br>
+            N'hésitez pas ensuite à prendre une capture d'écran pour partager votre classement à vos amis !
+        </p>
+
+        <header class="bloc" id="addPlayers">
+
+            <form id="flexbox" action="javascript:void(0);" onsubmit="return ajouter()">
+                <fieldset>
+                    <legend> Veuillez rentrer vos joueurs ici </legend>
+                    <div class="monFormulaire">
+                        <div class="Champ">
+                            <label for="prenom"> Prénom </label> : <input type="text" name="prenom" id="prenom" placeholder="Giannis">
+                        </div>
+                        <div class="Champ">
+                            <label for="nom"> Nom </label> : <input type="text" name="nom" id="nom" placeholder="Antetokounmpo">
+                        </div>
+                        <div class="Champ">
+                            <label for="equipe"> Equipe </label> : <input type="text" name="equipe" id="equipe" placeholder="Milwaukee Bucks">
+                        </div>
+                        <div class="Champ">
+                            <label for="poste"> Poste </label>
+                            <select name="poste" id="poste">
+                                <option value="Meneur"> Meneur de jeu </option>
+                                <option value="Arriere"> Arrière </option>
+                                <option value="Ailier"> Ailier </option>
+                                <option value="Ailier-fort"> Ailier-fort </option>
+                                <option value="Pivot"> Pivot </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="button_row">
+                        <button id="add" name="button" class="button" type="submit"> Ajouter le joueur </button>
+                        <button id="effacer" name="button" class="button" type="button" formnovalidate onclick="return resetClassement();"> Réinitialiser mon classement </button>
+                    </div>
+                </fieldset>
+            </form>
+        </header>
+        <main class="bloc" id="mvpRanking">
+            <table id="liste" CELLPADDING="10">
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Equipe</th>
+                    <th>Poste</th>
+                </tr>
+            </table>
+        </main>
+    </body>
+</html>
