@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <link rel="stylesheet" href="tableau_stats.css">
+        <title> Stats Fanatic </title>
+
+        <style>
+            .nav_button{
+                margin-left: 5px;
+                margin-right: 5px;
+                margin-bottom:auto;
+
+                color: white;
+                background-color: whitesmoke;
+
+                letter-spacing: .5px;
+                cursor: pointer;
+                outline: 0;
+                border: none;
+                border-radius: 2px;
+
+                display: inline-block;
+                height: 36px;
+                line-height: 36px;
+                padding: 0 16px;
+
+                position: relative;
+                overflow: hidden;
+
+                vertical-align: middle;
+
+                -webkit-filter: drop-shadow(3px 3px 3px rgb(88, 88, 88));
+                filter: drop-shadow(3px 3px 3px rgb(88, 88, 88));
+            }
+
+            .bloc{
+                margin-top: 36px;
+            }
+
+            .menu_button{
+                text-align: center;
+            }
+
+            .nav-bloc{
+                background: none;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="nba_logo.png" alt="The Logo">
+
+        <div class="bloc" id="listeStats">
+            <table id="tableStats">
+                <caption> Statistiques des équipes sur la saison 2019-2020 </caption>
+                <tr>
+                    <th>ID EQUIPE</th>
+                    <th> NOM EQUIPE </th>
+                    <th> MATCHS JOUES </th>
+                    <th> VICTOIRES </th>
+                    <th> DEFAITES </th>
+                    <th> % VICTOIRES </th>
+                    <th> DUREE MOYENNE <br> DES MATCHS </th>
+                    <th> FGM </th>
+                    <th> FGA </th>
+                    <th> FG_PCT </th>
+                    <th> FG3M </th>
+                    <th> FG3A </th>
+                    <th> FG3_PCT </th>
+                    <th> FTM </th>
+                    <th> FTA </th>
+                    <th> FT_PCT </th>
+                    <th> REB OFF </th>
+                    <th> REB DEF </th>
+                    <th> REB TOT </th>
+                    <th> AST </th>
+                    <th> STL </th>
+                    <th> BLK </th>
+                    <th> BLKA </th>
+                    <th> PF </th>
+                    <th> PFD </th>
+                    <th> PTS </th>
+                    <th> PLUS_MINUS </th>
+                    <th> GP_RANK </th>
+                    <th> W_RANK </th>
+                    <th> L_RANK </th>
+                    <th> W_PCT_RANK </th>
+                    <th> MIN_RANK </th>
+                    <th> FGM_RANK </th>
+                    <th> FGA_RANK </th>
+                    <th> FG_PCT_RANK </th>
+                    <th> FG3M_RANK </th>
+                    <th> FG3A_RANK </th>
+                    <th> FG3_PCT_RANK </th>
+                    <th> FTM_RANK </th>
+                    <th> FTA_RANK </th>
+                    <th> FT_PCT_RANK </th>
+                    <th> REB OFF_RANK </th>
+                    <th> REB DEF_RANK </th>
+                    <th> REB TOT_RANK </th>
+                    <th> AST_RANK </th>
+                    <th> STL_RANK </th>
+                    <th> BLK_RANK </th>
+                    <th> BLKA_RANK </th>
+                    <th> PF_RANK </th>
+                    <th> PFD_RANK </th>
+                    <th> PTS_RANK </th>
+                    <th> PLUS_MINUS_RANK </th>
+                    <th> CFID </th>
+                    <th> CFPARAMS </th>
+                </tr>
+            </table>
+        </div>
+
+        <script>
+
+            window.onload = getStats();
+
+            
+            let beg = 0;
+            let pageSize = 30;
+            let currentPage = 1;
+            let numPages;
+            var tableau;
+            
+            
+            function getStats(){
+
+                fetch("data_stats_teams.json", {mode : "no-cors"}).then(function(response) {
+                    let contentType = response.headers.get("content-type");
+                    if (contentType && contentType.indexOf("application/json") !== -1) {
+                        console.log(response);
+                        return response.json().then(function (data) {
+                            console.log('data', data);
+                            console.log("data.resultSets.rowSet : ", data.resultSets.rowSet);
+                            perstdata = data.resultSets.rowSet;
+                            console.log("perstdata dans fonction getStats : ", perstdata);
+                            numPages = Math.ceil(data.length / pageSize);
+                            paginerPrint(1, data.resultSets[0].rowSet)
+                        });
+                    } else {
+                        console.log("Oops, nous n'avons pas du JSON!");
+                    }
+                });
+            }
+
+            function createStat(obj){
+                var table = document.getElementById("tableStats");
+
+                var tableBody = document.getElementById("tableStats").tBodies[0];
+
+                let newCell;
+                var newRow = tableBody.insertRow(-1);
+                console.log(obj)
+                for (let i = 0; i < obj.length; i++){
+                    newCell = newRow.insertCell(i);
+                    newCell.appendChild(document.createTextNode(obj[i]))
+                }
+            }
+
+            function showStats(){
+                document.getElementById("listeStats").style.display = "block";
+            }
+
+            function clearStats() {
+                var table = document.getElementById("tableStats");
+                var rows = table.getElementsByTagName("tr");
+
+                for (let i = rows.length - 1; i > 0; i--){
+                    document.getElementById("tableStats").deleteRow(i);
+                }
+            }
+
+            function paginerPrint(page, perstdata){
+
+                if (page < 1){
+                    page = 1;
+                }
+                if (page > numPages){
+                    page = numPages;
+                }
+
+                beg = (page - 1) * pageSize
+                console.log("Paginer");
+                clearStats();
+
+                let el;
+                console.log("perstdata : ", perstdata);
+
+                for (let i = beg; i < (beg + pageSize); i++){
+                    console.log(i);
+                    el = perstdata[i];
+                    console.log(el);
+                    createStat(el);
+                }
+
+            }
+
+        </script>
+    </body>
+</html>
