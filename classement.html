@@ -53,18 +53,26 @@
         <h1> Classement NBA sur la saison 2019-2020 </h1>
         <div class="bloc" id="listeClassement">
             <table id="tableClassement">
-                <caption> Conférence Est </caption>
+                <caption> Classement global </caption>
                 <tr>
-                    <th>Rang</th>
-                    <th>Equipe</th>
-                    <th>Matchs joués</th>
+                    <th>Ville</th>
+                    <th>Franchise</th>
+                    <th>Conférence</th>
+                    <th>Bilan de conf</th>
+                    <th>Rang playoffs</th>
+                    <th>Playoffs sécurisés ? <br> x - Oui <br> o- Hors course</th>
+                    <th>Division</th>
+                    <th>Bilan de division</th>
+                    <th>Rang de division</th>
                     <th>Victoires</th>
                     <th>Défaites</th>
-                    <th>Pourcentage de victoires<th>
+                    <th>Pourcentage de victoires</th>
+                    <th>Bilan</th>
                     <th>Bilan à domicile</th>
                     <th>Bilan à l'extérieur</th>
-                    <th>Off. rating</th>
-                    <th>Def. rating</th>
+                    <th>10 derniers matchs</th>
+                    <th>10 derniers à domicile</th>
+                    <th>10 derniers à l'extérieur</th>
                 </tr>
             </table>
         </div>
@@ -75,7 +83,7 @@
 
             
             let beg = 0;
-            let pageSize = 25;
+            let pageSize = 30;
             let currentPage = 1;
             let numPages;
             var tableau;
