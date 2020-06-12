@@ -1,6 +1,7 @@
 body {
-    background-image: url(Fond_acceuil.jpg);
+    background-image: url(Fond_acceuil.png);
     background-size: cover;
+    font-family: verdana;
 }
 
 .blocktexte{

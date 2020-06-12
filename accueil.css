@@ -1,6 +1,18 @@
 body {
-    background-image: url(Fond_acceuil.jpg);
+    background-image: url(Fond_acceuil.png);
     background-size: cover;
+    font-family: verdana;
+}
+
+.blocktexte{
+    background-color: #5F27C8;
+    position : center;
+    border-radius: 10px;
+    margin: 100px auto ;
+    width: 1210px;
+    padding: 1em;
+    box-shadow: 1px 1px 12px #555;
+    z-index: 2;
 }
 
 *{
@@ -35,7 +47,9 @@ a{
 }
 header{
     background: #5F27C8;
+    position: relative;
     display: flex;
+    z-index: 1;
 }
 header ::after{
     content: '';
@@ -114,13 +128,16 @@ nav ul li:hover >ul{
 }
 
 .slider{
-    width: 1000px;
+    position: center;
+    width: 1200px;
+    height: 650px;
     overflow: hidden;
-    margin: 100px auto;
+    margin: auto
 }
 
 .slides{
-    width: calc(1000px * 4);
+    width: calc(1200px * 4);
+    animation: defil 10s infinite;
 }
 
 .slide{
@@ -132,14 +149,26 @@ nav ul li:hover >ul{
     0%{
         transform: translateX(0);
     }
-    25%{
+    15%{
         transform: translateX(0);
+    }
+    25%{
+        transform: translateX(-1200px);
+    }
+    40%{
+        transform: translateX(-1200px);
     }
     50%{
-        transform: translateX(0);
+        transform: translateX(-2400px);
+    }
+    65%{
+        transform: translateX(-2400px);
     }
     75%{
-        transform: translateX(0);
+        transform: translateX(-3600px);
+    }
+    90%{
+        transform: translateX(-3600px);
     }
     100%{
         transform: translateX(0);
