@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -10,24 +11,38 @@
 
     <style>
 
-        #info ul li {
+        .nous{
+            margin:100px auto;
+        }
+
+        .nous ul{
+            text-align: center;
+        }
+
+        .nous ul li {
             text-decoration: none;
-            padding: 1px;
-            margin:50 50 auto;
+            background-color: #5F27C8;
+            box-shadow: 1px 1px 12px #555;
+            border-radius: 3%;
+            padding: 15px;
             display: inline-block;
         }
 
-        #info li{
-            list-style: none;
-            background-color: #5F27C8;
-            border-radius: 10px;
+        .nous ul li ul{
             padding: 15px;
-            float: left;
-            margin: 100px 100px;
-            box-shadow: 1px 1px 12px #555;
         }
 
+        .nous ul li ul li{
+            box-shadow:none;
+        }
+
+
+
         .image{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
             width: 400px;
             height: 400px;
             border-radius: 100%;
@@ -55,9 +70,9 @@
                     <ul>
                         <li><a href="Accueil.html">Accueil</a></li>
                         <li><a href="NBA.html">La NBA</a></li>
-                        <li><a href="Stats.html">Stats</a>
+                        <li><a>Stats</a>
                             <ul>
-                                <li><a href="classe_A.html">Top 25</a></li>
+                                <li><a href="mvp_customisable.html">Classement personnel</a></li>
                                 <li><a href="classe_B.html">Equipe A</a></li>
                                 <li><a href="classe_C.html">Equipe B</a></li>
                                 <li><a href="classe_E.html">Equipe C</a></li>
@@ -72,37 +87,39 @@
         </header>
 
         <h1>Qui sommes nous ?</h1>
-        <ul id="info">
-            <li>
-                <img src="Tim.jpg" alt="Tim" class="image">
-                <ul id="info">
-                    <h1>Timothé Prévot</h1>
-                    <h4>Travail du Json</h4>
-                    <h4>Tableaux des stats</h4>
-                    <li><a href="https://www.facebook.com/timothe.prevot" target="_blank"><img src="logo-facebook.jpg" alt="linkedin" class="mini_logo"></a></li>
-                </ul>
-            </li>
-            <li>
-                <img src="Alex.jpg" alt="Alex" class="image">
-                <ul id="info">
-                    <h1>Alexandre Piedvache</h1>
-                    <h4>Site web et menu</h4>
-                    <h4>Design des pages et des images</h4>
-                    <li><a href="https://www.linkedin.com/in/alexandre-piedvache-b39601177/" target="_blank"><img src="logo-linkedin.jpg" alt="linkedin" class="mini_logo"></a></li>
-                    <li><a href="https://www.facebook.com/profile.php?id=100012731713098" target="_blank"><img src="logo-facebook.jpg" alt="linkedin" class="mini_logo"></a></li>
-                </ul>
-            </li>
-            <li>
-                <img src="PA.jpg" alt="PA" class="image">
-                <ul id="info">
-                    <h1>Paul Antoine Dab</h1>
-                    <h4>Recherches sur la NBA </h4>
-                    <h4>Site Responsive</h4>
-                    <li><a href="https://www.linkedin.com/in/paul-antoine-dab-266734177/" target="_blank"><img src="logo-linkedin.jpg" alt="linkedin" class="mini_logo"></a></li>
-                    <li><a href="https://www.facebook.com/paulantoine.dab" target="_blank"><img src="logo-facebook.jpg" alt="linkedin" class="mini_logo"></a></li>
-                </ul>
-            </li>
-        </ul>
+        <div class="nous">
+            <ul >
+                <li>
+                    <img src="Tim.jpg" alt="Tim" class="image">
+                    <ul>
+                        <h1>Timothé Prévot</h1>
+                        <h4>Travail du Json</h4>
+                        <h4>Tableaux des stats</h4>
+                        <li><a href="https://www.facebook.com/timothe.prevot" target="_blank"><img src="logo-facebook.jpg" alt="linkedin" class="mini_logo"></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="Alex.jpg" alt="Alex" class="image">
+                    <ul>
+                        <h1>Alexandre Piedvache</h1>
+                        <h4>Site web et menu</h4>
+                        <h4>Design des pages et des images</h4>
+                        <li><a href="https://www.linkedin.com/in/alexandre-piedvache-b39601177/" target="_blank"><img src="logo-linkedin.jpg" alt="linkedin" class="mini_logo"></a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100012731713098" target="_blank"><img src="logo-facebook.jpg" alt="linkedin" class="mini_logo"></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="PA.jpg" alt="PA" class="image">
+                    <ul>
+                        <h1>Paul Antoine Dab</h1>
+                        <h4>Recherches sur la NBA </h4>
+                        <h4>Site Responsive</h4>
+                        <li><a href="https://www.linkedin.com/in/paul-antoine-dab-266734177/" target="_blank"><img src="logo-linkedin.jpg" alt="linkedin" class="mini_logo"></a></li>
+                        <li><a href="https://www.facebook.com/paulantoine.dab" target="_blank"><img src="logo-facebook.jpg" alt="linkedin" class="mini_logo"></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
 
     </body>
 </html>

@@ -1,31 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-            <meta charset='utf-8'/>
+            <meta charset="utf-8"/>
+            <link rel="icon" href="logo-NBA.jpg">
             <link rel="stylesheet" href="mvp_customisable.css">
             <title> Créez votre classement MVP ! </title>
     </head>
+
     <body>
-        <p><img src="nba_logo.png" alt="The Logo"></p>
 
-        <h1> Créez votre classement MVP !</h1>
+        <header>
+            <div class="container">
+                <img src="logo-NBA.jpg" alt="logo" class="logo" >
+                <nav>
+                    <ul>
+                        <li><a href="Accueil.html">Accueil</a></li>
+                        <li><a href="NBA.html">La NBA</a></li>
+                        <li><a>Stats</a>
+                            <ul>
+                                <li><a href="mvp_customisable.html">Classement personnel</a></li>
+                                <li><a href="classe_B.html">Equipe A</a></li>
+                                <li><a href="classe_C.html">Equipe B</a></li>
+                                <li><a href="classe_E.html">Equipe C</a></li>
+                                <li><a href="classe_S.html">Equipe D</a></li>
+                                <li><a href="suv.html">Equipe A</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="Nous.html">Qui sommes-nous ?</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-        <p> Nous vous proposons dans cette section de créer votre propre classement MVP pour la saison 2019-2020 ! <br>
-            Remplissez directement les champs, et ajoutez vos joueurs au fur et à mesure. <br>
-            N'hésitez pas ensuite à prendre une capture d'écran pour partager votre classement à vos amis !
-        </p>
 
-        <header class="bloc" id="addPlayers">
+
+        <div class="bloc" id="addPlayers">
 
             <form id="flexbox" action="javascript:void(0);" onsubmit="return ajouter()">
                 <fieldset>
                     <legend> Veuillez rentrer vos joueurs ici </legend>
                     <div class="monFormulaire">
                         <div class="Champ">
-                            <label for="prenom"> Prénom </label> : <input type="text" name="prenom" id="prenom" placeholder="Giannis">
+                            <label for="prenom"> Prénom </label> : <input type="text" name="prenom" id="prenom" placeholder="">
                         </div>
                         <div class="Champ">
-                            <label for="nom"> Nom </label> : <input type="text" name="nom" id="nom" placeholder="Antetokounmpo">
+                            <label for="nom"> Nom </label> : <input type="text" name="nom" id="nom" placeholder="">
                         </div>
                         <div class="Champ">
                             <label for="equipe"> Equipe </label>
@@ -79,9 +98,10 @@
                     </div>
                 </fieldset>
             </form>
-        </header>
+        </div>
+
         <main class="bloc" id="mvpRanking">
-            <table id="liste" CELLPADDING="10">
+            <table id="liste" cellpadding="10">
                 <tr>
                     <th>Prénom</th>
                     <th>Nom</th>
@@ -90,6 +110,8 @@
                 </tr>
             </table>
         </main>
+
+
         <script>
 
             function ajouter(){
