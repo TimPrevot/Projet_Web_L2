@@ -131,10 +131,19 @@ nav ul li ul{
     position:absolute;
     background-color: #5F27C8;
     border-radius: 3%;
-    
 }
 nav ul li:hover >ul{
     display: block;
+}
+
+.blockimage{
+    text-align: center;
+    margin:50px auto;
+}
+
+.image{
+    border-radius: 3%;
+    box-shadow: 1px 1px 12px #555;
 }
 
 

@@ -1,36 +1,138 @@
-body{
-    background-color: rgb(238, 238, 238);
+body {
+    background-image: url(Fond_acceuil.png);
+    background-size: cover;
     font-family: verdana;
 }
 
-* {
-    box-sizing: border-box;
+*{
+    margin: 0px;
+    padding: 0px;
 }
 
-.bloc{
-    background-color: white;
-    display: block;
 
+a{
+    display: block;
+}
+
+
+.width_image{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    bottom: 0;
+}
+
+.logo{
+        padding: 10px 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        bottom: 0;
+}
+.container{
+    margin: 0 auto;
+    width: 80%;
+
+}
+header{
+    background: #5F27C8;
+    position: relative;
+    display: flex;
+    z-index: 1;
+}
+header ::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.logo{
+
+    float: left;
+}
+nav {
+
+    float: left;
+}
+nav ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+}
+
+nav li{
+    display: inline-block;
+    margin:1em 80px;
+    position: relative;
+}
+
+
+nav ul>li>a{
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 24px 4;
+    position: relative;
+}
+
+nav ul>li> a:hover{
+    color: red;
+}
+
+nav ul>li> a::before{
+    content:'';
+    display: block;
+    width: 0%;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    transition: all ease-in-out 250ms;
+
+}
+
+nav ul>li> a:hover::before{
+    width: 100%;
+}
+
+nav ul li ul{
+    display: none;
+    position:absolute;
+    background-color: #5F27C8;
+    border-radius: 3%;
+}
+nav ul li:hover >ul{
+    display: block;
+}
+
+
+
+.bloc{
+    display : block;
+    background-color: #5F27C8;
+    border-radius: 3%;
     overflow: auto;
-    overflow-x: scroll;
-    border-radius: 2px;
-    -webkit-filter: drop-shadow(3px 3px 3px #222);
-    filter: drop-shadow(3px 3px 3px #222);
-    padding: 10px;
+    -webkit-filter: drop-shadow(1px 1px 12px #555);
+    filter : drop-shadow(1px 1px 12px #555);
+    padding : 10px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 15px;
     max-width: 1000px;
+    margin-top: 36px;
 }
 
-img{
-    width: 100px;
-    height: 100px;
-    box-shadow: 8px 8px 12px #aaa;
-    display: block;
-    margin: 20px auto 20px auto;
-    -webkit-filter: drop-shadow(3px 3px 3px #222);
-    filter: drop-shadow(3px 3px 3px #222);
+
+.monFormulaire{
+    display : flex;
+    flex-wrap: wrap;
+}
+
+.Champ{
+    margin-right: 10px;
+    margin-bottom: 7px;
+    flex-grow: 1;
 }
 
 .button{
@@ -42,7 +144,6 @@ img{
     cursor : pointer;
     outline : 0;
     border : none;
-    
 
     position : relative;
     overflow :hidden;
@@ -58,9 +159,33 @@ img{
     filter : drop-shadow(2px 2px 2px rgb(88 88 88));
 }
 
-table::before{
-    content: "";
+button.hover{
+    background-color: lightgrey;
+}
 
+button.row{
+    margin : 10px 10px 5px 10px;
+}
+
+input{
+    border: 0;
+    border-radius: 3%;
+    outline: 0;
+    background: white;
+    border-bottom: 1px solid lightgrey;
+}
+ 
+input:invalid{
+    border-color : red;
+    caret-color : red;
+}
+
+input, select{
+    width : 100%;
+}
+  
+#flexbox{
+    flex-direction: row;
 }
 
 table{
@@ -86,3 +211,16 @@ td, th{
     width : 25%;
 }
 
+.blockimage{
+    text-align: center;
+    margin:50px auto;
+}
+
+.image{
+    border-radius: 3%;
+    box-shadow: 1px 1px 12px #555;
+}
+
+.txt{
+    margin-top:25px;
+}
