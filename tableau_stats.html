@@ -49,13 +49,6 @@
     </head>
     <body>
         <img src="nba_logo.png" alt="The Logo">
-        <nav class="menu">
-            <div id="stats" class="bloc nav-bloc">
-                <div class="menu-button">
-                    <button name="button" class="nav-button" type="button" formnovalidate onclick="return showStats();"> Voir les stats sur la saison 2019-2020</button>
-                </div>
-            </div>
-        </nav>
 
         <div class="bloc" id="listeStats">
             <table id="tableStats">
@@ -107,10 +100,11 @@
             let pageSize = 25;
             let currentPage = 1;
             let numPages;
+            var tableau;
 
             function getStats(){
 
-                fetch("data_stats.json", {mode : "no-cors"}).then(function(response) {
+                fetch("data_stats_players.json", {mode : "no-cors"}).then(function(response) {
                     let contentType = response.headers.get("content-type");
                     if (contentType && contentType.indexOf("application/json") !== -1) {
                         console.log(response);
@@ -140,23 +134,6 @@
                 }
             }
 
-            function replaceStat(obj){
-                var table = document.getElementById("tableStats");
-                var tableBody = document.getElementsByTagName("tableStats").tBodies[0];
-                var rows = table.getElementsByTagName("tr");
-
-                var currentRow;
-                let newCell;
-                for (let i = rows.length - 1; i > 0; i--){
-                    document.getElementById("tableStats").deleteRow(i);
-                    currentRow = rows[rows.length - 1];
-                    for (let j = 0; j < obj.length; j++){
-                        newCell = currentRow.insertCell(j);
-                        newCell.appendChild(document.createTextNode(obj[j]));
-                    }
-                }
-            }
-
             function showStats(){
                 document.getElementById("listeStats").style.display = "block";
             }
@@ -183,6 +160,7 @@
                 clearStats();
 
                 let el;
+                console.log("perstdata : ", perstdata);
 
                 for (let i = beg; i < (beg + pageSize); i++){
                     console.log(i);
