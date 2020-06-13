@@ -113,8 +113,8 @@ nav ul li:hover >ul{
     background-color: #5F27C8;
     border-radius: 3%;
     overflow: auto;
-    -webkit-filter: drop-shadow(3px 3px 3px #222);
-    filter : drop-shadow(3px 3px 3px #222);
+    -webkit-filter: drop-shadow(1px 1px 12px #555);
+    filter : drop-shadow(1px 1px 12px #555);
     padding : 10px;
     margin-left: auto;
     margin-right: auto;
@@ -209,4 +209,18 @@ td, th{
     border-color: black;
     border-bottom: none;
     width : 25%;
+}
+
+.blockimage{
+    text-align: center;
+    margin:50px auto;
+}
+
+.image{
+    border-radius: 3%;
+    box-shadow: 1px 1px 12px #555;
+}
+
+.txt{
+    margin-top:25px;
 }
