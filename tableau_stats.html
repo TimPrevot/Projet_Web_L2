@@ -3,48 +3,14 @@
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="tableau_stats.css">
-        <title> Stats Fanatic </title>
+        <title> Leaders statistiques sur la saison 2019-2020 </title>
 
         <style>
-            .nav_button{
-                margin-left: 5px;
-                margin-right: 5px;
-                margin-bottom:auto;
-
-                color: white;
-                background-color: whitesmoke;
-
-                letter-spacing: .5px;
-                cursor: pointer;
-                outline: 0;
-                border: none;
-                border-radius: 2px;
-
-                display: inline-block;
-                height: 36px;
-                line-height: 36px;
-                padding: 0 16px;
-
-                position: relative;
-                overflow: hidden;
-
-                vertical-align: middle;
-
-                -webkit-filter: drop-shadow(3px 3px 3px rgb(88, 88, 88));
-                filter: drop-shadow(3px 3px 3px rgb(88, 88, 88));
-            }
 
             .bloc{
                 margin-top: 36px;
             }
-
-            .menu_button{
-                text-align: center;
-            }
-
-            .nav-bloc{
-                background: none;
-            }
+            
         </style>
     </head>
     <body>
@@ -103,15 +69,6 @@
                     <th> EFF </th>
                 </tr>
             </table>
-            <div class="centre">
-                <div class="pagination">
-                    <div id="btn-pages"></div>
-                    <div id="btn-pages-binary">
-                        <a id="btn-prev" href="javascript:pagePrec()">&laquo;</a>
-                        <a id="btn-next" href="javascript:nextPage()">&raquo;</a>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <script>
@@ -155,10 +112,6 @@
                     newCell = newRow.insertCell(i);
                     newCell.appendChild(document.createTextNode(obj[i]))
                 }
-            }
-
-            function showStats(){
-                document.getElementById("listeStats").style.display = "block";
             }
 
             function clearStats() {
@@ -214,23 +167,6 @@
                     }
                 }
             }
-
-            function pagePrec(){
-                if (currentPage > 1){
-                    let data = null;
-                    currentPage--;
-                    paginerPrint(currentPage, data);
-                }
-            }
-
-            function nextPage(){
-                if (currentPage < numPages){
-                    let data = null;
-                    currentPage++;
-                    paginerPrint(currentPage, data);
-                }
-            }
-
 
         </script>
     </body>
