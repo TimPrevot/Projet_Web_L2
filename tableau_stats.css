@@ -195,11 +195,11 @@ table{
 }
 
 tr:nth-child(odd){
-    background-color: rgb(255, 159, 159);
+    background-color: lightskyblue;
 }
 
 th{
-    background-color: red;
+    background-color: rgb(62, 178, 250);
 }
 
 td, th{
